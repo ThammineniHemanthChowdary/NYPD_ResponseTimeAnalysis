@@ -1,0 +1,67 @@
+
+**Data Preprocessing / Transformations:**
+
+1. **Handling Missing Values:**
+   - Identify and handle missing values in the dataset, focusing on critical features. This could involve using imputation techniques, such as mean or median imputation, or removing instances with missing values if appropriate.
+
+2. **Formatting Dates and Times:**
+   - Convert date and time features into a standardized format, ensuring consistency across the dataset. Extract relevant time-based features such as hour of the day and day of the week.
+
+3. **Categorical Variable Encoding:**
+   - Convert categorical variables (e.g., borough names, radio codes) into numerical representations. One-hot encoding is a suitable technique to make categorical variables compatible with machine learning models.
+
+4. **Normalizing Numerical Features:**
+   - Normalize numerical features to ensure they are on a similar scale. This prevents certain features from dominating the model due to differences in magnitude. Techniques like Min-Max scaling or Standardization can be employed.
+
+5. **Feature Engineering:**
+   - Decompose date/time features into additional features, such as day of the week and hour of the day, to capture temporal patterns.
+   - Engineer rolled-up features like the number of calls in the past 2 hours to provide the model with information about recent trends.
+------------------------------------------------------------------------------------------------------------------
+
+**Modeling Techniques:**
+
+1. **Regression Models:**
+   - Leverage regression models such as Lasso, Ridge, and ElasticNet for forecasting numeric crime levels.
+   - Benefit from interpretable coefficients, aligning with stakeholder preferences for transparency.
+
+2. **Time Series Models:**
+   - Utilize time series models like ARIMA and Prophet to capture temporal dependencies, trends, and seasonality patterns in crime data.
+   - Account for the temporal nature of the dataset and its impact on crime levels over time.
+
+3. **Ensemble Models:**
+   - Employ ensemble models such as Random Forest and XGBoost to enhance predictive accuracy.
+   - Leverage the strength of combining multiple models to improve overall performance and robustness.
+
+4. **Neural Networks:**
+   - Consider neural networks, specifically LSTMs, for modeling sequence data and temporal interactions.
+   - Verify the dataset size is sufficient for effective training of deep learning models, as LSTMs may require substantial amounts of data.
+------------------------------------------------------------------------------------------------------------------
+**Model Evaluation:**
+
+1. **Data Splitting:**
+   - Split the data into training, validation, and test sets to facilitate model training, tuning, and evaluation on independent datasets.
+
+2. **Cross-Validation:**
+   - Implement k-fold cross-validation on the training data for hyperparameter tuning. Ensure that the cross-validation is stratified or time-aware, especially when dealing with imbalanced or time-series data. This approach ensures a fair representation of different crime scenarios.
+
+3. **Regression Models:**
+   - Evaluate regression models using metrics like RMSE (Root Mean Squared Error) and MAE (Mean Absolute Error) on the test set. These metrics provide insights into the accuracy and precision of numeric crime level predictions.
+
+4. **Classification Models:**
+   - Assess classification models using metrics such as confusion matrix, AUC-ROC (Area Under the Receiver Operating Characteristic Curve), and precision-recall curves on the test set. These metrics help understand the model's ability to classify crime incidents accurately.
+
+5. **Interpretability Metrics:**
+   - Consider using interpretability metrics such as SHAP (SHapley Additive exPlanations) values or LIME (Local Interpretable Model-agnostic Explanations) to interpret the output of complex models. This is particularly valuable for providing stakeholders with insights into how the model makes predictions.
+
+------------------------------------------------------------------------------------------------------------------
+**Communication with Stakeholders:**
+
+1. **Model Complexity and Interpretability:**
+   - Clearly communicate the trade-offs between model complexity and interpretability to stakeholders. Depending on their priorities, stakeholders may prefer simpler models that are easier to understand and interpret. Provide insights into how complex models may improve accuracy but may be harder to explain.
+
+2. **Stakeholder Engagement:**
+   - Regularly engage with stakeholders to understand their evolving needs and incorporate feedback into the modeling process. Ensure that the machine learning project remains aligned with the changing priorities and requirements of stakeholders.
+
+3. **Tailored Evaluation Metrics:**
+   - Tune evaluation metrics to align with stakeholder needs. Recognize that different stakeholders may have diverse priorities. For precinct commanders, emphasize interpretability and geospatial accuracy of predictions. For policymakers, focus on metrics related to bias and fairness. Analyze model discrepancies across precincts to provide a comprehensive understanding.
+
